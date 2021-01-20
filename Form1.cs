@@ -16,5 +16,11 @@ namespace FinalProjectExperience
         {
             InitializeComponent();
         }
+
+        private void tmrGame_Tick(object sender, EventArgs e)
+        {
+            // Code here
+            pictureBox1.Left = pictureBox1.Left - 1;
+        }
     }
 }
