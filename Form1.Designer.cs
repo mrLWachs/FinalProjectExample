@@ -36,12 +36,12 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.picEnemy = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.tmrGame = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picHero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -59,7 +59,7 @@
             // picHero
             // 
             this.picHero.BackColor = System.Drawing.Color.Yellow;
-            this.picHero.Location = new System.Drawing.Point(60, 546);
+            this.picHero.Location = new System.Drawing.Point(51, 554);
             this.picHero.Name = "picHero";
             this.picHero.Size = new System.Drawing.Size(93, 76);
             this.picHero.TabIndex = 0;
@@ -119,10 +119,6 @@
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
             // 
-            // tmrGame
-            // 
-            this.tmrGame.Tick += new System.EventHandler(this.tmrGame_Tick);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Blue;
@@ -168,6 +164,10 @@
             this.pictureBox11.TabIndex = 0;
             this.pictureBox11.TabStop = false;
             // 
+            // tmrGame
+            // 
+            this.tmrGame.Tick += new System.EventHandler(this.tmrGame_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +186,7 @@
             this.Controls.Add(this.picEnemy);
             this.Controls.Add(this.picHero);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picHero)).EndInit();
@@ -214,12 +214,12 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox picEnemy;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Timer tmrGame;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Timer tmrGame;
     }
 }
 

@@ -13,17 +13,29 @@ namespace FinalProjectExperience
     public partial class Form1 : Form
     {
 
-        const int MOVE_LEFT  = 1;
-        const int MOVE_RIGHT = 2;
-        const int MOVE_UP    = 3;
-        const int MOVE_DOWN  = 4;
-        const int STOP       = 0;
+        // global variables
 
-        const int HERO_AMOUNT   = 1;
-        const int HERO_INTERVAL = 1;
+        const int UP    = 1;
+        const int DOWN  = 2;
+        const int LEFT  = 3;
+        const int RIGHT = 4;
+        const int STOP  = 0;
+        const int HERO_AMOUNT  = 3;
+        const int ENEMY_AMOUNT = 1;
+        const int GAME_DELAY = 1;
 
-        int heroDirection = 0;
-        int enemyDirection = 0;
+        int heroDirection = STOP;
+        int enemyDirection = STOP;
+
+        // Put all the walls into a "list" 
+        // called an array
+
+        // NOTE: every time I add a wall with the designer,
+        // change this number!
+        const int TOTAL_WALLS = 10;
+
+        PictureBox[] walls = new PictureBox[TOTAL_WALLS];
+
 
 
         public Form1()
@@ -33,27 +45,47 @@ namespace FinalProjectExperience
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tmrGame.Interval = HERO_INTERVAL;
+            // the code that runs when the form first appears
+
+            // NOTE: if you add a wall with the 
+            // designer, change the code below:
+
+            walls[0] = pictureBox1;
+            walls[1] = pictureBox2;
+            walls[2] = pictureBox3;
+            walls[3] = pictureBox4;
+            walls[4] = pictureBox5;
+            walls[5] = pictureBox11;
+            walls[6] = pictureBox7;
+            walls[7] = pictureBox8;
+            walls[8] = pictureBox9;
+            walls[9] = pictureBox10;
+
+
+            // now show the form
+            MessageBox.Show("Let's begin!");
+            tmrGame.Interval = GAME_DELAY;
             tmrGame.Enabled = true;
         }
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            if      (heroDirection == MOVE_UP)    picHero.Top  = picHero.Top  - HERO_AMOUNT;
-            else if (heroDirection == MOVE_DOWN)  picHero.Top  = picHero.Top  + HERO_AMOUNT;
-            else if (heroDirection == MOVE_LEFT)  picHero.Left = picHero.Left - HERO_AMOUNT;
-            else if (heroDirection == MOVE_RIGHT) picHero.Left = picHero.Left + HERO_AMOUNT;
+            // the code that runs every 100 miliseconds
+            // 1 tenth of a second like a loop (over and over)
+            if      (heroDirection == UP)    picHero.Top  = picHero.Top  - HERO_AMOUNT;
+            else if (heroDirection == DOWN)  picHero.Top  = picHero.Top  + HERO_AMOUNT;
+            else if (heroDirection == LEFT)  picHero.Left = picHero.Left - HERO_AMOUNT;
+            else if (heroDirection == RIGHT) picHero.Left = picHero.Left + HERO_AMOUNT;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if      (e.KeyCode == Keys.Up)    heroDirection = MOVE_UP;
-            else if (e.KeyCode == Keys.Down)  heroDirection = MOVE_DOWN;
-            else if (e.KeyCode == Keys.Left)  heroDirection = MOVE_LEFT;
-            else if (e.KeyCode == Keys.Right) heroDirection = MOVE_RIGHT;
-            else                              heroDirection = STOP;
+            // the code that runs when when the user press a key
+            if      (e.KeyCode == Keys.Up)    heroDirection = UP; 
+            else if (e.KeyCode == Keys.Down)  heroDirection = DOWN; 
+            else if (e.KeyCode == Keys.Left)  heroDirection = LEFT; 
+            else if (e.KeyCode == Keys.Right) heroDirection = RIGHT;
+            else                              heroDirection = STOP; 
         }
-
-        
     }
 }
