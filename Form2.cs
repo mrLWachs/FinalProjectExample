@@ -25,6 +25,17 @@ namespace FinalProjectExperience
         int heroDirection = STOP;
         int enemyDirection = STOP;
 
+        // Put all the walls (pictureboxes)
+        // into a "list" (called a array)
+        // part of CS30S
+
+        // NOTE: every time I decide to
+        // add a wall with the designer
+        // need to change this code!
+
+        const int TOTAL_WALLS = 13;
+
+        PictureBox[] walls = new PictureBox[TOTAL_WALLS];
 
 
         public Form2()
@@ -34,6 +45,28 @@ namespace FinalProjectExperience
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            // Add the wall pictureboxes into the array ("list")
+
+            // NOTE: every time I decide to
+            // add a wall with the designer
+            // need to change this code!
+
+            walls[0] = pictureBox1;
+            walls[1] = pictureBox10;
+            walls[2] = pictureBox11;
+            walls[3] = pictureBox12;
+            walls[4] = pictureBox13;
+            walls[5] = pictureBox2;
+            walls[6] = pictureBox3;
+            walls[7] = pictureBox4;
+            walls[8] = pictureBox5;
+            walls[9] = pictureBox6;
+            walls[10] = pictureBox7;
+            walls[11] = pictureBox8;
+            walls[12] = pictureBox9;
+
+            
+
             MessageBox.Show("Let's begin!");
             tmrGame.Interval = 10;
             tmrGame.Enabled = true;
