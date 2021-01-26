@@ -87,6 +87,38 @@ namespace FinalProjectExperience
             else if (heroDirection == DOWN)  picHero.Top  = picHero.Top  + HERO_AMOUNT;
             else if (heroDirection == LEFT)  picHero.Left = picHero.Left - HERO_AMOUNT;
             else if (heroDirection == RIGHT) picHero.Left = picHero.Left + HERO_AMOUNT;
+
+            // check for walls
+            for (int i = 0; i < TOTAL_WALLS; i++)
+            {
+                // get a wall out of the array
+                PictureBox wall = walls[i];
+
+                // check for collison
+                if (picHero.Bounds.IntersectsWith(wall.Bounds))
+                {
+                    // Check direction and react
+                    if (heroDirection == UP)
+                    {
+                        picHero.Top = wall.Top + wall.Height + 1;
+                    }
+                    else if (heroDirection == DOWN)
+                    {
+                        picHero.Top = wall.Top - picHero.Height - 1;
+                    }
+                    else if (heroDirection == LEFT)
+                    {
+                        picHero.Left = wall.Left + wall.Width + 1;
+                    }
+                    else if (heroDirection == RIGHT)
+                    {
+                        picHero.Left = wall.Left - picHero.Width - 1;
+                    }
+                }
+
+
+            }
+
         }
     }
 }
