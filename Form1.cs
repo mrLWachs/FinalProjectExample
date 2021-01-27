@@ -32,7 +32,7 @@ namespace FinalProjectExperience
 
         // NOTE: every time I add a wall with the designer,
         // change this number!
-        const int TOTAL_WALLS = 10;
+        const int TOTAL_WALLS = 11;
 
         PictureBox[] walls = new PictureBox[TOTAL_WALLS];
 
@@ -60,6 +60,7 @@ namespace FinalProjectExperience
             walls[7] = pictureBox8;
             walls[8] = pictureBox9;
             walls[9] = pictureBox10;
+            walls[10] = pictureBox6;
 
 
             // now show the form
@@ -76,6 +77,39 @@ namespace FinalProjectExperience
             else if (heroDirection == DOWN)  picHero.Top  = picHero.Top  + HERO_AMOUNT;
             else if (heroDirection == LEFT)  picHero.Left = picHero.Left - HERO_AMOUNT;
             else if (heroDirection == RIGHT) picHero.Left = picHero.Left + HERO_AMOUNT;
+
+            // check for walls
+            for (int i = 0; i < TOTAL_WALLS; i++)
+            {
+                // get a wall from the array
+                PictureBox wall = walls[i];
+
+                // check for collision
+                if (picHero.Bounds.IntersectsWith(wall.Bounds))
+                {
+
+                    // just hit a wall, stop
+                    
+                    if (heroDirection == UP)
+                    {
+                        picHero.Top = wall.Top + wall.Height + 1;
+                    }
+                    else if (heroDirection == DOWN)
+                    {
+                        picHero.Top = wall.Top - picHero.Height - 1;
+                    }
+                    else if (heroDirection == LEFT)
+                    {
+                        picHero.Left = wall.Left + wall.Width + 1;
+                    }
+                    else if (heroDirection == RIGHT)
+                    {
+                        picHero.Left = wall.Left - picHero.Width - 1;
+                    }
+
+                }
+
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
