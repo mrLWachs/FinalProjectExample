@@ -107,6 +107,15 @@ namespace FinalProjectExperience
                 MessageBox.Show("You win!");
             }
 
+            // check for objective
+            if (picHero.Bounds.IntersectsWith(picEnemy.Bounds))
+            {
+                tmrGame.Enabled = false;
+                MessageBox.Show("You lose!");
+            }
+
+
+
 
             // check for walls
             for (int i = 0; i < TOTAL_WALLS; i++)
