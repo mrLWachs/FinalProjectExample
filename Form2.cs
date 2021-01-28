@@ -37,6 +37,9 @@ namespace FinalProjectExperience
 
         PictureBox[] walls = new PictureBox[TOTAL_WALLS];
 
+        Random random = new Random();
+
+
 
         public Form2()
         {
@@ -65,8 +68,7 @@ namespace FinalProjectExperience
             walls[11] = pictureBox8;
             walls[12] = pictureBox9;
 
-            // Start the enemy in a random direction
-            Random random = new Random();
+            // Start the enemy in a random direction            
             enemyDirection = random.Next(1, 5);
 
             MessageBox.Show("Let's begin!");
@@ -111,7 +113,8 @@ namespace FinalProjectExperience
             {
                 // get a wall out of the array
                 PictureBox wall = walls[i];
-                // check for collison
+                
+                // checking hero for collison
                 if (picHero.Bounds.IntersectsWith(wall.Bounds))
                 {
                     // Check direction and react
@@ -132,6 +135,34 @@ namespace FinalProjectExperience
                         picHero.Left = wall.Left - picHero.Width - 1;
                     }
                 }
+
+                // checking enemy for collison
+                if (picEnemy.Bounds.IntersectsWith(wall.Bounds))
+                {
+                    // Check direction and react
+                    if (enemyDirection == UP)
+                    {
+                        picEnemy.Top = wall.Top + wall.Height + 1;
+                    }
+                    else if (enemyDirection == DOWN)
+                    {
+                        picEnemy.Top = wall.Top - picEnemy.Height - 1;
+                    }
+                    else if (enemyDirection == LEFT)
+                    {
+                        picEnemy.Left = wall.Left + wall.Width + 1;
+                    }
+                    else if (enemyDirection == RIGHT)
+                    {
+                        picEnemy.Left = wall.Left - picEnemy.Width - 1;
+                    }
+
+                    // send the enemy in a random direction            
+                    enemyDirection = random.Next(1, 5);
+
+                }
+
+
             }
 
 
