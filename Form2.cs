@@ -65,7 +65,9 @@ namespace FinalProjectExperience
             walls[11] = pictureBox8;
             walls[12] = pictureBox9;
 
-            
+            // Start the enemy in a random direction
+            Random random = new Random();
+            enemyDirection = random.Next(1, 5);
 
             MessageBox.Show("Let's begin!");
             tmrGame.Interval = 10;
@@ -83,17 +85,32 @@ namespace FinalProjectExperience
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
+            // To move the hero
             if      (heroDirection == UP)    picHero.Top  = picHero.Top  - HERO_AMOUNT;
             else if (heroDirection == DOWN)  picHero.Top  = picHero.Top  + HERO_AMOUNT;
             else if (heroDirection == LEFT)  picHero.Left = picHero.Left - HERO_AMOUNT;
             else if (heroDirection == RIGHT) picHero.Left = picHero.Left + HERO_AMOUNT;
+
+            // To move the enemy
+            if (enemyDirection == UP) picEnemy.Top = picEnemy.Top - ENEMY_AMOUNT;
+            else if (enemyDirection == DOWN) picEnemy.Top = picEnemy.Top + ENEMY_AMOUNT;
+            else if (enemyDirection == LEFT) picEnemy.Left = picEnemy.Left - ENEMY_AMOUNT;
+            else if (enemyDirection == RIGHT) picEnemy.Left = picEnemy.Left + ENEMY_AMOUNT;
+
+
+            // check for objective
+            if (picHero.Bounds.IntersectsWith(picObjective.Bounds))
+            {
+                tmrGame.Enabled = false;
+                MessageBox.Show("You win!");
+            }
+
 
             // check for walls
             for (int i = 0; i < TOTAL_WALLS; i++)
             {
                 // get a wall out of the array
                 PictureBox wall = walls[i];
-
                 // check for collison
                 if (picHero.Bounds.IntersectsWith(wall.Bounds))
                 {
@@ -115,9 +132,9 @@ namespace FinalProjectExperience
                         picHero.Left = wall.Left - picHero.Width - 1;
                     }
                 }
-
-
             }
+
+
 
         }
     }

@@ -45,6 +45,7 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.picObjective = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -60,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picObjective)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox7
@@ -110,7 +112,7 @@
             // picEnemy
             // 
             this.picEnemy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.picEnemy.Location = new System.Drawing.Point(705, 83);
+            this.picEnemy.Location = new System.Drawing.Point(634, 257);
             this.picEnemy.Name = "picEnemy";
             this.picEnemy.Size = new System.Drawing.Size(93, 76);
             this.picEnemy.TabIndex = 6;
@@ -119,7 +121,7 @@
             // picHero
             // 
             this.picHero.BackColor = System.Drawing.Color.Yellow;
-            this.picHero.Location = new System.Drawing.Point(73, 559);
+            this.picHero.Location = new System.Drawing.Point(54, 402);
             this.picHero.Name = "picHero";
             this.picHero.Size = new System.Drawing.Size(93, 76);
             this.picHero.TabIndex = 7;
@@ -201,12 +203,22 @@
             this.pictureBox13.TabIndex = 15;
             this.pictureBox13.TabStop = false;
             // 
+            // picObjective
+            // 
+            this.picObjective.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.picObjective.Location = new System.Drawing.Point(828, 38);
+            this.picObjective.Name = "picObjective";
+            this.picObjective.Size = new System.Drawing.Size(24, 76);
+            this.picObjective.TabIndex = 16;
+            this.picObjective.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(864, 705);
+            this.Controls.Add(this.picObjective);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox6);
@@ -242,6 +254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picObjective)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,5 +277,6 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox picObjective;
     }
 }
