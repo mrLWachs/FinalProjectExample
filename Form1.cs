@@ -15,12 +15,12 @@ namespace FinalProjectExperience
 
         // global variables
 
-        const int UP    = 1;
-        const int DOWN  = 2;
-        const int LEFT  = 3;
+        const int UP = 1;
+        const int DOWN = 2;
+        const int LEFT = 3;
         const int RIGHT = 4;
-        const int STOP  = 0;
-        const int HERO_AMOUNT  = 3;
+        const int STOP = 0;
+        const int HERO_AMOUNT = 3;
         const int ENEMY_AMOUNT = 1;
         const int GAME_DELAY = 1;
 
@@ -35,6 +35,8 @@ namespace FinalProjectExperience
         const int TOTAL_WALLS = 11;
 
         PictureBox[] walls = new PictureBox[TOTAL_WALLS];
+
+        Random random = new Random();
 
 
 
@@ -63,6 +65,9 @@ namespace FinalProjectExperience
             walls[10] = pictureBox6;
 
 
+            // Start the enemy in a random direction
+            enemyDirection = random.Next(1, 5);
+
             // now show the form
             MessageBox.Show("Let's begin!");
             tmrGame.Interval = GAME_DELAY;
@@ -71,25 +76,47 @@ namespace FinalProjectExperience
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
+            // Move the hero.................................................
             // the code that runs every 100 miliseconds
             // 1 tenth of a second like a loop (over and over)
-            if      (heroDirection == UP)    picHero.Top  = picHero.Top  - HERO_AMOUNT;
-            else if (heroDirection == DOWN)  picHero.Top  = picHero.Top  + HERO_AMOUNT;
-            else if (heroDirection == LEFT)  picHero.Left = picHero.Left - HERO_AMOUNT;
+            if (heroDirection == UP) picHero.Top = picHero.Top - HERO_AMOUNT;
+            else if (heroDirection == DOWN) picHero.Top = picHero.Top + HERO_AMOUNT;
+            else if (heroDirection == LEFT) picHero.Left = picHero.Left - HERO_AMOUNT;
             else if (heroDirection == RIGHT) picHero.Left = picHero.Left + HERO_AMOUNT;
 
-            // check for walls
+            // Move the enemy.................................................
+            if (enemyDirection == UP) picEnemy.Top = picEnemy.Top - ENEMY_AMOUNT;
+            else if (enemyDirection == DOWN) picEnemy.Top = picEnemy.Top + ENEMY_AMOUNT;
+            else if (enemyDirection == LEFT) picEnemy.Left = picEnemy.Left - ENEMY_AMOUNT;
+            else if (enemyDirection == RIGHT) picEnemy.Left = picEnemy.Left + ENEMY_AMOUNT;
+
+
+            // check if I won...................................................
+            if (picHero.Bounds.IntersectsWith(picObjective.Bounds))
+            {
+                tmrGame.Enabled = false;
+                MessageBox.Show("You win!");
+            }
+
+            // check if I lose........................................
+            if (picHero.Bounds.IntersectsWith(picEnemy.Bounds))
+            {
+                tmrGame.Enabled = false;
+                MessageBox.Show("You lose!");
+            }
+
+
+
+            // check for walls...............................................
             for (int i = 0; i < TOTAL_WALLS; i++)
             {
                 // get a wall from the array
                 PictureBox wall = walls[i];
 
-                // check for collision
+                // check hero for collision
                 if (picHero.Bounds.IntersectsWith(wall.Bounds))
                 {
-
-                    // just hit a wall, stop
-                    
+                    // the hero just hit a wall, stop                    
                     if (heroDirection == UP)
                     {
                         picHero.Top = wall.Top + wall.Height + 1;
@@ -106,20 +133,44 @@ namespace FinalProjectExperience
                     {
                         picHero.Left = wall.Left - picHero.Width - 1;
                     }
+                }
 
+                // check for enemy collision
+                if (picEnemy.Bounds.IntersectsWith(wall.Bounds))
+                {
+                    // the enemy just hit a wall, stop
+                    if (enemyDirection == UP)
+                    {
+                        picEnemy.Top = wall.Top + wall.Height + 1;
+                    }
+                    else if (enemyDirection == DOWN)
+                    {
+                        picEnemy.Top = wall.Top - picEnemy.Height - 1;
+                    }
+                    else if (enemyDirection == LEFT)
+                    {
+                        picEnemy.Left = wall.Left + wall.Width + 1;
+                    }
+                    else if (enemyDirection == RIGHT)
+                    {
+                        picEnemy.Left = wall.Left - picEnemy.Width - 1;
+                    }
+                    // now send the enemy a random direction
+                    enemyDirection = random.Next(1, 5);
                 }
 
             }
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             // the code that runs when when the user press a key
-            if      (e.KeyCode == Keys.Up)    heroDirection = UP; 
-            else if (e.KeyCode == Keys.Down)  heroDirection = DOWN; 
-            else if (e.KeyCode == Keys.Left)  heroDirection = LEFT; 
+            if (e.KeyCode == Keys.Up) heroDirection = UP;
+            else if (e.KeyCode == Keys.Down) heroDirection = DOWN;
+            else if (e.KeyCode == Keys.Left) heroDirection = LEFT;
             else if (e.KeyCode == Keys.Right) heroDirection = RIGHT;
-            else                              heroDirection = STOP; 
+            else heroDirection = STOP;
         }
     }
 }
