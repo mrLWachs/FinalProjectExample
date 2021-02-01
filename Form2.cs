@@ -88,6 +88,28 @@ namespace FinalProjectExperience
                 if (tmrShoot.Enabled == false)
                 {
                     tmrShoot.Enabled = true;
+                    // put the bullet into position
+                    if (heroDirection == UP)
+                    {
+                        picBullet.Left = picHero.Left + (picHero.Width / 2) - (picBullet.Width / 2);
+                        picBullet.Top = picHero.Top - picBullet.Height;
+                    }
+                    else if (heroDirection == DOWN)
+                    {
+                        picBullet.Left = picHero.Left + (picHero.Width / 2) - (picBullet.Width / 2);
+                        picBullet.Top = picHero.Top + picHero.Height;
+                    }
+                    else if (heroDirection == LEFT)
+                    {
+                        picBullet.Left = picHero.Left  - picBullet.Width;
+                        picBullet.Top = picHero.Top + (picHero.Height / 2) - (picBullet.Height / 2);
+                    }
+                    else if (heroDirection == RIGHT)
+                    {
+                        picBullet.Left = picHero.Left + picHero.Width;
+                        picBullet.Top = picHero.Top + (picHero.Height / 2) - (picBullet.Height / 2);
+                    }
+                    picBullet.Visible = true;
                 }
             }
             else heroDirection = STOP;

@@ -47,6 +47,7 @@
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.picObjective = new System.Windows.Forms.PictureBox();
             this.tmrShoot = new System.Windows.Forms.Timer(this.components);
+            this.picBullet = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -63,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picObjective)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBullet)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox7
@@ -213,12 +215,23 @@
             this.picObjective.TabIndex = 16;
             this.picObjective.TabStop = false;
             // 
+            // picBullet
+            // 
+            this.picBullet.BackColor = System.Drawing.Color.White;
+            this.picBullet.Location = new System.Drawing.Point(87, 348);
+            this.picBullet.Name = "picBullet";
+            this.picBullet.Size = new System.Drawing.Size(26, 30);
+            this.picBullet.TabIndex = 17;
+            this.picBullet.TabStop = false;
+            this.picBullet.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(864, 705);
+            this.Controls.Add(this.picBullet);
             this.Controls.Add(this.picObjective);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.pictureBox12);
@@ -256,6 +269,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picObjective)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBullet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,5 +294,6 @@
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox picObjective;
         private System.Windows.Forms.Timer tmrShoot;
+        private System.Windows.Forms.PictureBox picBullet;
     }
 }
