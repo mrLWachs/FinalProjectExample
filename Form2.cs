@@ -142,14 +142,15 @@ namespace FinalProjectExperience
                 MessageBox.Show("You win!");
             }
 
-            // check for objective
-            if (picHero.Bounds.IntersectsWith(picEnemy.Bounds))
+            // check for enemy
+            if (picEnemy.Visible == true)
             {
-                tmrGame.Enabled = false;
-                MessageBox.Show("You lose!");
+                if (picHero.Bounds.IntersectsWith(picEnemy.Bounds))
+                {
+                    tmrGame.Enabled = false;
+                    MessageBox.Show("You lose!");
+                }
             }
-
-
 
 
             // check for walls
@@ -216,10 +217,20 @@ namespace FinalProjectExperience
         private void tmrShoot_Tick(object sender, EventArgs e)
         {
             // To move the hero
-            if (bulletDirection == UP) picBullet.Top = picBullet.Top - BULLET_AMOUNT;
-            else if (bulletDirection == DOWN) picBullet.Top = picBullet.Top + BULLET_AMOUNT;
-            else if (bulletDirection == LEFT) picBullet.Left = picBullet.Left - BULLET_AMOUNT;
+            if      (bulletDirection == UP)    picBullet.Top  = picBullet.Top  - BULLET_AMOUNT;
+            else if (bulletDirection == DOWN)  picBullet.Top  = picBullet.Top  + BULLET_AMOUNT;
+            else if (bulletDirection == LEFT)  picBullet.Left = picBullet.Left - BULLET_AMOUNT;
             else if (bulletDirection == RIGHT) picBullet.Left = picBullet.Left + BULLET_AMOUNT;
+
+            // check for collision of bullet and enemy
+            if (picBullet.Bounds.IntersectsWith(picEnemy.Bounds))
+            {
+                picEnemy.Visible = false;
+                // stop the bullet
+                picBullet.Visible = false;
+                tmrShoot.Enabled = false;
+            }
+
 
         }
     }
