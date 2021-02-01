@@ -43,6 +43,7 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.picObjective = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picHero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picObjective)).BeginInit();
             this.SuspendLayout();
             // 
             // picHero
@@ -106,7 +108,7 @@
             // picEnemy
             // 
             this.picEnemy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.picEnemy.Location = new System.Drawing.Point(692, 70);
+            this.picEnemy.Location = new System.Drawing.Point(612, 60);
             this.picEnemy.Name = "picEnemy";
             this.picEnemy.Size = new System.Drawing.Size(93, 76);
             this.picEnemy.TabIndex = 0;
@@ -179,6 +181,15 @@
             this.pictureBox6.TabIndex = 1;
             this.pictureBox6.TabStop = false;
             // 
+            // picObjective
+            // 
+            this.picObjective.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.picObjective.Location = new System.Drawing.Point(815, 25);
+            this.picObjective.Name = "picObjective";
+            this.picObjective.Size = new System.Drawing.Size(26, 76);
+            this.picObjective.TabIndex = 0;
+            this.picObjective.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +206,7 @@
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.picObjective);
             this.Controls.Add(this.picEnemy);
             this.Controls.Add(this.picHero);
             this.Name = "Form1";
@@ -214,6 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picObjective)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,6 +247,7 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Timer tmrGame;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox picObjective;
     }
 }
 

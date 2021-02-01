@@ -78,11 +78,19 @@ namespace FinalProjectExperience
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
-            if      (e.KeyCode == Keys.Up)    heroDirection = UP;
-            else if (e.KeyCode == Keys.Down)  heroDirection = DOWN;
-            else if (e.KeyCode == Keys.Left)  heroDirection = LEFT;
+            if (e.KeyCode == Keys.Up) heroDirection = UP;
+            else if (e.KeyCode == Keys.Down) heroDirection = DOWN;
+            else if (e.KeyCode == Keys.Left) heroDirection = LEFT;
             else if (e.KeyCode == Keys.Right) heroDirection = RIGHT;
-            else                              heroDirection = STOP;
+            else if (e.KeyCode == Keys.Space)
+            {
+                // is it already firing?
+                if (tmrShoot.Enabled == false)
+                {
+                    tmrShoot.Enabled = true;
+                }
+            }
+            else heroDirection = STOP;
         }
 
         private void tmrGame_Tick(object sender, EventArgs e)
