@@ -207,31 +207,45 @@ namespace FinalProjectExperience
 
                 }
 
-
             }
-
-
 
         }
 
         private void tmrShoot_Tick(object sender, EventArgs e)
         {
-            // To move the hero
-            if      (bulletDirection == UP)    picBullet.Top  = picBullet.Top  - BULLET_AMOUNT;
-            else if (bulletDirection == DOWN)  picBullet.Top  = picBullet.Top  + BULLET_AMOUNT;
-            else if (bulletDirection == LEFT)  picBullet.Left = picBullet.Left - BULLET_AMOUNT;
+            // To move the bullet
+            if (bulletDirection == UP) picBullet.Top = picBullet.Top - BULLET_AMOUNT;
+            else if (bulletDirection == DOWN) picBullet.Top = picBullet.Top + BULLET_AMOUNT;
+            else if (bulletDirection == LEFT) picBullet.Left = picBullet.Left - BULLET_AMOUNT;
             else if (bulletDirection == RIGHT) picBullet.Left = picBullet.Left + BULLET_AMOUNT;
 
             // check for collision of bullet and enemy
-            if (picBullet.Bounds.IntersectsWith(picEnemy.Bounds))
+            if (picEnemy.Visible == true)
             {
-                picEnemy.Visible = false;
-                // stop the bullet
-                picBullet.Visible = false;
-                tmrShoot.Enabled = false;
+                if (picBullet.Bounds.IntersectsWith(picEnemy.Bounds))
+                {
+                    picEnemy.Visible = false;
+                    // stop the bullet
+                    picBullet.Visible = false;
+                    tmrShoot.Enabled = false;
+                }
             }
 
+            // check for collison of the bullet and the walls
+            for (int i = 0; i < TOTAL_WALLS; i++)
+            {
+                // get a wall out of the array
+                PictureBox wall = walls[i];
 
+                // checking hero for collison
+                if (picBullet.Bounds.IntersectsWith(wall.Bounds))
+                {
+                    // stop the bullet
+                    picBullet.Visible = false;
+                    tmrShoot.Enabled = false;
+                }
+            }
         }
+
     }
 }
