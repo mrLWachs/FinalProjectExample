@@ -215,6 +215,10 @@
             this.picObjective.TabIndex = 16;
             this.picObjective.TabStop = false;
             // 
+            // tmrShoot
+            // 
+            this.tmrShoot.Tick += new System.EventHandler(this.tmrShoot_Tick);
+            // 
             // picBullet
             // 
             this.picBullet.BackColor = System.Drawing.Color.White;

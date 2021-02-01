@@ -19,11 +19,14 @@ namespace FinalProjectExperience
         const int RIGHT = 4;
         const int STOP  = 0;
 
-        const int HERO_AMOUNT  = 2;
-        const int ENEMY_AMOUNT = 1;
+        const int HERO_AMOUNT   = 2;
+        const int ENEMY_AMOUNT  = 1;
+        const int BULLET_AMOUNT = 5;
 
         int heroDirection = STOP;
         int enemyDirection = STOP;
+        int bulletDirection = STOP;
+
 
         // Put all the walls (pictureboxes)
         // into a "list" (called a array)
@@ -73,6 +76,7 @@ namespace FinalProjectExperience
 
             MessageBox.Show("Let's begin!");
             tmrGame.Interval = 10;
+            tmrShoot.Interval = 10;
             tmrGame.Enabled = true;
         }
 
@@ -110,6 +114,7 @@ namespace FinalProjectExperience
                         picBullet.Top = picHero.Top + (picHero.Height / 2) - (picBullet.Height / 2);
                     }
                     picBullet.Visible = true;
+                    bulletDirection = heroDirection;
                 }
             }
             else heroDirection = STOP;
@@ -205,6 +210,16 @@ namespace FinalProjectExperience
             }
 
 
+
+        }
+
+        private void tmrShoot_Tick(object sender, EventArgs e)
+        {
+            // To move the hero
+            if (bulletDirection == UP) picBullet.Top = picBullet.Top - BULLET_AMOUNT;
+            else if (bulletDirection == DOWN) picBullet.Top = picBullet.Top + BULLET_AMOUNT;
+            else if (bulletDirection == LEFT) picBullet.Left = picBullet.Left - BULLET_AMOUNT;
+            else if (bulletDirection == RIGHT) picBullet.Left = picBullet.Left + BULLET_AMOUNT;
 
         }
     }
